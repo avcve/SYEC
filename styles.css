@@ -1,3 +1,4 @@
+/* Simplified flip card without top/bottom halves */
 main .cards .card .flip-card {
     position: relative;
     width: 125px;
@@ -7,9 +8,10 @@ main .cards .card .flip-card {
     align-items: center;
     font-size: 70px;
     font-weight: bold;
-    color: rgb(142, 33, 231);
+    color: rgb(98, 75, 117);
     background-color: transparent;
     border: none;
+    /* remove border/shadow */
     overflow: hidden;
 }
 
@@ -24,6 +26,7 @@ main .cards .card .flip-card .flip-number {
     transform-style: preserve-3d;
 }
 
+/* Flip animation */
 @keyframes flip {
     0% {
         transform: rotateX(0deg);
