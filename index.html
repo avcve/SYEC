@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SYEC - Student Visa Consultancy</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         * {
             margin: 0;
@@ -134,10 +135,24 @@
         footer {
             text-align: center;
             padding: 1.5rem;
-            background: #0d47a1;
             color: #fff;
             margin-top: 3rem;
+            min-height: 200px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            background-image: url(https://raw.githubusercontent.com/alleycaaat/frontend-mentor/main/countdown-timer/images/pattern-hills.svg);
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            position: relative;
+            /* let it flow with page content */
+            width: 100%;
         }
+
 
         /* ANIMATED BACKGROUND */
 
@@ -258,6 +273,26 @@
                 border-radius: 50%;
             }
         }
+
+        .card.users .top-half,
+        .card.users .bottom-half,
+        .card.users .top-flip,
+        .card.users .bottom-flip {
+            width: 125px;
+            /* or whatever fits */
+            height: 80px;
+            /* taller */
+            font-size: 70px;
+            /* bigger number */
+            padding: 0;
+            /* remove extra padding */
+            box-shadow: none;
+            /* remove border/shadow */
+            color: rgb(98, 75, 117);
+            /* match your desired color */
+            background-color: transparent;
+            /* optional */
+        }
     </style>
 </head>
 
@@ -339,9 +374,51 @@
         <li></li>
     </ul>
 
+
+    <main>
+
+        <div class='cards'>
+
+
+
+            <div class="card users">
+                <div style="display:flex; align-items:center; justify-content:center; gap:5px;">
+                    <div class="flip-card" id="userCountCard">
+                        <div class="flip-number">00</div>
+                    </div>
+                    <span style="font-size:70px; font-weight:bold; color: rgb(98, 75, 117);">+</span>
+                </div>
+                <p style="text-align:center; font-size:20px; font-weight:bold;color:rgb(98, 75, 117) !important;">Happy
+                    Students</p>
+            </div>
+
+
+
+        </div>
+    </main>
     <footer>
+
+
+        <div class='media'>
+            <a href='#'>
+                <img src='https://raw.githubusercontent.com/alleycaaat/frontend-mentor/main/countdown-timer/images/icon-facebook.svg'
+                    alt='facebook icon'>
+            </a>
+            <a href='#'>
+                <img src='https://raw.githubusercontent.com/alleycaaat/frontend-mentor/main/countdown-timer/images/icon-instagram.svg'
+                    alt='instagram icon'>
+            </a>
+            <a href='#'>
+                <img src='https://raw.githubusercontent.com/alleycaaat/frontend-mentor/main/countdown-timer/images/icon-pinterest.svg'
+                    alt='pinterest icon'>
+            </a>
+        </div>
         <p>&copy; 2025 Southern Yale Educational Consultancy (SYEC). All Rights Reserved.</p>
+
     </footer>
+
+
+
 
     <script>
         const cards = document.querySelectorAll('.card');
@@ -357,6 +434,55 @@
             observer.observe(card);
         });
     </script>
+
+    <script>
+        // Function to handle flip animation for simplified single-block number
+        const addFlip = (card, newNumber) => {
+            const number = card.querySelector('.flip-number');
+            if (number.innerText === newNumber) return;
+
+            // Update number and trigger CSS flip animation
+            number.innerText = newNumber;
+            number.classList.remove('flip'); // reset animation
+            void number.offsetWidth; // trigger reflow
+            number.classList.add('flip');
+        };
+
+        // Flip counter from 01 → target
+        function countFlipUp(target, duration = 3000) {
+            const card = document.getElementById('userCountCard');
+            let current = 0;
+            const totalFrames = target;
+            const interval = duration / totalFrames;
+
+            function update() {
+                current++;
+                if (current > target) return;
+
+                // Format number with leading zero
+                const displayNum = String(current).padStart(2, '0');
+                addFlip(card, displayNum);
+
+                if (current < target) setTimeout(update, interval);
+            }
+
+            update();
+        }
+
+        // Trigger counter when visible on screen
+        const counterObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    countFlipUp(50, 3000); // Count 01 → 50 in 3 seconds
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counterObserver.observe(document.getElementById('userCountCard'));
+    </script>
+
+
 </body>
 
 </html>
