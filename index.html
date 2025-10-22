@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SYEC - Student Visa Consultancy</title>
+    <title>Dark Pinno Raffle Draw</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Burned&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         * {
@@ -13,12 +16,23 @@
             box-sizing: border-box;
         }
 
+
+
         body {
-            font-family: Arial, sans-serif;
             background: #000;
             color: #fff;
             line-height: 1.6;
         }
+
+        body {
+            font-family: 'Yantramanav', sans-serif;
+            font-weight: 700;
+            /* Bold */
+        }
+
+
+
+
 
         nav {
             background: #0d47a1;
@@ -53,27 +67,27 @@
             color: #90caf9;
         }
 
+
+        header {
+            font-family: "Rubik Burned", system-ui;
+            font-weight: 400;
+        }
+
         header {
             text-align: center;
-            padding: 3rem 1rem;
-            background: linear-gradient(to bottom, #0d47a1, transparent);
+            padding: 1rem;
+            background: linear-gradient(to bottom, #F8C200, transparent);
         }
 
         header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 200px;
+
         }
 
-        header img {
-            width: 120px;
-            margin: 1rem auto;
-            display: block;
+        header h2 {
+            font-size: 100px;
         }
 
-        header p {
-            font-size: 1.2rem;
-            color: #ddd;
-        }
 
         .cards-container {
             max-width: 1100px;
@@ -87,7 +101,7 @@
         .card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            border: 1px solid #2196f3;
+            border: 1px solid #F8C200;
             padding: 2rem;
             border-radius: 12px;
             opacity: 0;
@@ -109,7 +123,7 @@
         }
 
         .card h2 {
-            color: #2196f3;
+            color: #F8C200;
             margin-bottom: 1rem;
         }
 
@@ -121,7 +135,7 @@
         .card a {
             display: inline-block;
             padding: 0.8rem 1.5rem;
-            background: #2196f3;
+            background: #F8C200;
             color: #fff;
             border-radius: 6px;
             text-decoration: none;
@@ -144,7 +158,7 @@
             justify-content: center;
             align-items: center;
 
-            background-image: url(https://raw.githubusercontent.com/alleycaaat/frontend-mentor/main/countdown-timer/images/pattern-hills.svg);
+            background-image: url(footer.png);
             background-repeat: no-repeat;
             background-size: cover;
 
@@ -176,14 +190,19 @@
             list-style: none;
             width: 20px;
             height: 20px;
-            background-color: #ff3cac;
+            background-color: #F8C200;
             background-image: linear-gradient(225deg,
-                    #ff3cac 0%,
-                    #784ba0 50%,
-                    #2b86c5 100%);
+                    #ffe066 0%,
+                    /* light gold highlight */
+                    #F8C200 50%,
+                    /* main color */
+                    #b38600 100%
+                    /* darker gold for depth */
+                );
             animation: animate 25s linear infinite;
             bottom: -150px;
         }
+
 
         .circles li:nth-child(1) {
             left: 25%;
@@ -274,65 +293,47 @@
             }
         }
 
-        .card.users .top-half,
-        .card.users .bottom-half,
-        .card.users .top-flip,
-        .card.users .bottom-flip {
-            width: 125px;
-            /* or whatever fits */
-            height: 80px;
-            /* taller */
-            font-size: 70px;
-            /* bigger number */
-            padding: 0;
-            /* remove extra padding */
-            box-shadow: none;
-            /* remove border/shadow */
-            color: rgb(98, 75, 117);
-            /* match your desired color */
-            background-color: transparent;
-            /* optional */
+
+
+
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 80px;
+            }
+
+            header h2 {
+                font-size: 50px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <nav>
-        <div class="logo">SYEC</div>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#countries">Countries</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+
 
     <header>
-        <img src="logo.png" alt="SYEC Logo" style="border-radius: 20%;">
-        <h1>Southern Yale Educational Consultancy (SYEC)</h1>
-
-        <p>Empowering Nigerian students with the best pathways to education in Europe and beyond.</p>
+        <h1>Dark Pino</h1>
+        <h2>Raffle Draw</h2>
     </header>
 
     <section id="countries" class="cards-container">
         <div class="card">
-            <img src="img1.jpeg" alt="Study in UK">
-            <h2>Study in the UK</h2>
-            <p>We provide expert guidance for your UK student visa, including application requirements,
-                interview prep, and school placement support.</p>
-            <a href="https://forms.gle/fZ1iX585NtxjfAVC7">Apply for a UK Visit Visa</a>
+            <img src="safe-removebg-preview.png" alt="Study in UK">
+            <h2>Rewards Vault</h2>
+            <p>Get your tickets and enter them into the Raffle drum and win prizes</p>
+            <a href="#">Enter your tickets now</a>
         </div>
 
         <div class="card">
-            <img src="img2.jpg" alt="Study in US">
-            <h2>Study in the US</h2>
-            <p>From selecting universities to preparing documents, SYEC ensures you have
-                everything you need to secure a US student visa successfully.</p>
-            <a href="https://forms.gle/szTpmAj6EN5TywPQ8">Apply for a US Visit Visa</a>
+            <img src="BuyTicket.png" alt="Study in US">
+            <h2>Purchase Ticket</h2>
+            <p>Purchase your tickets now using sol, e-transfer or your credit card</p>
+            <a href="#">Buy Tickets</a>
         </div>
     </section>
 
-    <section id="about" class="cards-container">
+    <!-- <section id="about" class="cards-container">
         <div class="card">
             <img src="about-s.png" alt="About SYEC" h>
             <h2>About SYEC</h2>
@@ -340,9 +341,9 @@
                 pursuing higher education abroad. With years of experience, we provide personalized
                 solutions tailored to your academic dreams.</p>
         </div>
-    </section>
+    </section> -->
 
-    <section id="contact" class="cards-container">
+    <!-- <section id="contact" class="cards-container">
         <div class="card">
             <img src="contact.png" alt="Contact SYEC">
             <h2>Contact Us</h2>
@@ -359,7 +360,7 @@
 
 
         </div>
-    </section>
+    </section> -->
 
     <ul class="circles">
         <li></li>
@@ -375,7 +376,7 @@
     </ul>
 
 
-    <main>
+    <!-- <main>
 
         <div class='cards'>
 
@@ -396,12 +397,12 @@
 
 
         </div>
-    </main>
+    </main> -->
     <footer>
 
 
         <div class='media'>
-            <a href='https://www.facebook.com/100077678221344/'>
+            <a href='#'>
                 <img src='https://raw.githubusercontent.com/alleycaaat/frontend-mentor/main/countdown-timer/images/icon-facebook.svg'
                     alt='facebook icon'>
             </a>
@@ -414,7 +415,7 @@
                     alt='pinterest icon'>
             </a>
         </div>
-        <p>&copy; 2025 Southern Yale Educational Consultancy (SYEC). All Rights Reserved.</p>
+        <p>&copy; 2025 dark pino. All Rights Reserved.</p>
 
     </footer>
 
