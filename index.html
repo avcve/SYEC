@@ -4,485 +4,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Pinno Raffle Draw</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Burned&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <title>darknav</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 
-
-
-        body {
-            background: #000;
-            color: #fff;
-            line-height: 1.6;
-        }
-
-        body {
-            font-family: 'Yantramanav', sans-serif;
-            font-weight: 700;
-            /* Bold */
-        }
-
-
-
-
-
-        nav {
-            background: #0d47a1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #90caf9;
-        }
-
-
-        header {
-            font-family: "Rubik Burned", system-ui;
-            font-weight: 400;
-        }
-
-        header {
-            text-align: center;
-            padding: 1rem;
-            background: linear-gradient(to bottom, #F8C200, transparent);
-        }
-
-        header h1 {
-            font-size: 200px;
-
-        }
-
-        header h2 {
-            font-size: 100px;
-        }
-
-
-        .cards-container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid #F8C200;
-            padding: 2rem;
-            border-radius: 12px;
-            opacity: 0;
-            transform: translateX(-100px);
-            transition: all 0.8s ease;
-        }
-
-        .card.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .card img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .card h2 {
-            color: #F8C200;
-            margin-bottom: 1rem;
-        }
-
-        .card p {
-            color: #eee;
-            margin-bottom: 1.5rem;
-        }
-
-        .card a {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background: #F8C200;
-            color: #fff;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: background 0.3s ease;
-        }
-
-        .card a:hover {
-            background: #1976d2;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            color: #fff;
-            margin-top: 3rem;
-            min-height: 200px;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            background-image: url(footer.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-
-            position: relative;
-            /* let it flow with page content */
-            width: 100%;
-        }
-
-
-        /* ANIMATED BACKGROUND */
-
-        .circles {
-            position: fixed;
-            /* Change from absolute to fixed */
-            bottom: 0;
-            /* Attach to bottom of the viewport */
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-            /* Ensure circles stay behind your main content */
-        }
-
-
-        .circles li {
-            position: absolute;
-            display: block;
-            list-style: none;
-            width: 20px;
-            height: 20px;
-            background-color: #F8C200;
-            background-image: linear-gradient(225deg,
-                    #ffe066 0%,
-                    /* light gold highlight */
-                    #F8C200 50%,
-                    /* main color */
-                    #b38600 100%
-                    /* darker gold for depth */
-                );
-            animation: animate 25s linear infinite;
-            bottom: -150px;
-        }
-
-
-        .circles li:nth-child(1) {
-            left: 25%;
-            width: 80px;
-            height: 80px;
-            animation-delay: 0s;
-        }
-
-        .circles li:nth-child(2) {
-            left: 10%;
-            width: 20px;
-            height: 20px;
-            animation-delay: 2s;
-            animation-duration: 12s;
-        }
-
-        .circles li:nth-child(3) {
-            left: 70%;
-            width: 20px;
-            height: 20px;
-            animation-delay: 4s;
-        }
-
-        .circles li:nth-child(4) {
-            left: 40%;
-            width: 60px;
-            height: 60px;
-            animation-delay: 0s;
-            animation-duration: 18s;
-        }
-
-        .circles li:nth-child(5) {
-            left: 65%;
-            width: 20px;
-            height: 20px;
-            animation-delay: 0s;
-        }
-
-        .circles li:nth-child(6) {
-            left: 75%;
-            width: 110px;
-            height: 110px;
-            animation-delay: 3s;
-        }
-
-        .circles li:nth-child(7) {
-            left: 35%;
-            width: 150px;
-            height: 150px;
-            animation-delay: 7s;
-        }
-
-        .circles li:nth-child(8) {
-            left: 50%;
-            width: 25px;
-            height: 25px;
-            animation-delay: 15s;
-            animation-duration: 45s;
-        }
-
-        .circles li:nth-child(9) {
-            left: 20%;
-            width: 15px;
-            height: 15px;
-            animation-delay: 2s;
-            animation-duration: 35s;
-        }
-
-        .circles li:nth-child(10) {
-            left: 85%;
-            width: 150px;
-            height: 150px;
-            animation-delay: 0s;
-            animation-duration: 11s;
-        }
-
-        @keyframes animate {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-                border-radius: 0;
-            }
-
-            100% {
-                transform: translateY(-1000px) rotate(720deg);
-                opacity: 0;
-                border-radius: 50%;
-            }
-        }
-
-
-
-
-
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 80px;
-            }
-
-            header h2 {
-                font-size: 50px;
-            }
-        }
-    </style>
 </head>
 
 <body>
+    <nav>
 
+        <ul class="nav-links">
+            <li><a href="">Home</a></li>
+            <li><a href="">Catalog</a></li>
+            <li><a href="">Contests</a></li>
+            <li><a href="">Cart</a></li>
+        </ul>
 
-    <header>
-        <h1>Dark Pino</h1>
-        <h2>Raffle Draw</h2>
-    </header>
-
-    <section id="countries" class="cards-container">
-        <div class="card">
-            <img src="safe-removebg-preview.png" alt="Study in UK">
-            <h2>Rewards Vault</h2>
-            <p>Get your tickets and enter them into the Raffle drum and win prizes</p>
-            <a href="#">Enter your tickets now</a>
+        <div class="logo">DPino Contests</div>
+        <div class="btns">
+            <button class="btn">
+                Connect Wallet
+            </button>
         </div>
 
-        <div class="card">
-            <img src="BuyTicket.png" alt="Study in US">
-            <h2>Purchase Ticket</h2>
-            <p>Purchase your tickets now using sol, e-transfer or your credit card</p>
-            <a href="#">Buy Tickets</a>
+        <!-- Hamburger Icon (for mobile) -->
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+
+    </nav>
+
+    <section class="hero-section">
+
+    </section>
+
+
+    <section class="quick-start">
+        <div class="desc">
+            <h1>Quick Entries</h1>
+            <p>Skip the Shopping and Instantly get Entered.</p>
+        </div>
+
+        <div class="container-1">
+            <div class="card">
+                <img src="entry1.png" alt="Entry 3">
+                <div class="card-text">
+                    🎟 100,000 Entries <span>100x</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="entry2.png" alt="Entry 3">
+                <div class="card-text">
+                    🎟 100,000 Entries <span>100x</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="entry3.png" alt="Entry 3">
+                <div class="card-text">
+                    🎟 100,000 Entries <span>100x</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- <section id="about" class="cards-container">
-        <div class="card">
-            <img src="about-s.png" alt="About SYEC" h>
-            <h2>About SYEC</h2>
-            <p>Southern Yale Educational Consultancy is a trusted advisor for Nigerian students
-                pursuing higher education abroad. With years of experience, we provide personalized
-                solutions tailored to your academic dreams.</p>
-        </div>
-    </section> -->
 
-    <!-- <section id="contact" class="cards-container">
-        <div class="card">
-            <img src="contact.png" alt="Contact SYEC">
-            <h2>Contact Us</h2>
-            <p>Have questions? Reach out to our team for personalized guidance and consultation.</p>
-
-            <p>Email: Southernyaleeduco@gmail.com | Phone: +447769773718</p>
-            <a href="https://wa.me/447769773718?text=Hello%20%E2%80%94%20I%27m%20interested%20in%20studying%20abroad.%20how%20can%20i%20apply%3F"
-                target="_blank" rel="noopener">
-                Message on WhatsApp
-            </a>
-            <a href="mailto:Southernyaleeduco@gmail.com" target="_blank" rel="noopener">
-                Send us an Email
-            </a>
+    <section class="Catalog">
+        <h1>Catalog</h1>
 
 
-        </div>
-    </section> -->
-
-    <ul class="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-
-
-    <!-- <main>
-
-        <div class='cards'>
-
-
-
-            <div class="card users">
-                <div style="display:flex; align-items:center; justify-content:center; gap:5px;">
-                    <div class="flip-card" id="userCountCard">
-                        <div class="flip-number">00</div>
-                    </div>
-                    <span style="font-size:70px; font-weight:bold; color: rgb(163, 134, 187);">+</span>
+        <div class="container-2">
+            <div class="card">
+                <img src="clothes-removebg-preview.png" alt="Entry 1">
+                <div class="card-text">
+                    🎟 100,000 Entries<br>100x
                 </div>
-                <p style="text-align:center; font-size:20px; font-weight:bold;color:rgb(163, 134, 187) !important;">
-                    Happy
-                    Students</p>
             </div>
 
+            <div class="card">
+                <img src="clothes-removebg-preview.png" alt="Entry 1">
+                <div class="card-text">
+                    🎟 100,000 Entries<br>100x
+                </div>
+            </div>
 
+            <div class="card">
+                <img src="clothes-removebg-preview.png" alt="Entry 1">
+                <div class="card-text">
+                    🎟 100,000 Entries <span>100x</span>
+                </div>
+            </div>
 
+            <div class="card">
+                <img src="clothes-removebg-preview.png" alt="Entry 1">
+                <div class="card-text">
+                    🎟 100,000 Entries<br>100x
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="clothes-removebg-preview.png" alt="Entry 1">
+                <div class="card-text">
+                    🎟 100,000 Entries<br>100x
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="clothes-removebg-preview.png" alt="Entry 1">
+                <div class="card-text">
+                    🎟 100,000 Entries <span>100x</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="clothes-removebg-preview.png" alt="Entry 1">
+                <div class="card-text">
+                    🎟 100,000 Entries<br>100x
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="clothes-removebg-preview.png" alt="Entry 1">
+                <div class="card-text">
+                    🎟 100,000 Entries<br>100x
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="clothes-removebg-preview.png" alt="Entry 1">
+                <div class="card-text">
+                    🎟 100,000 Entries <span>100x</span>
+                </div>
+            </div>
         </div>
-    </main> -->
-    <footer>
+    </section>
 
 
-        <div class='media'>
-            <a href='#'>
-                <img src='https://raw.githubusercontent.com/alleycaaat/frontend-mentor/main/countdown-timer/images/icon-facebook.svg'
-                    alt='facebook icon'>
-            </a>
-            <a href='#'>
-                <img src='https://raw.githubusercontent.com/alleycaaat/frontend-mentor/main/countdown-timer/images/icon-instagram.svg'
-                    alt='instagram icon'>
-            </a>
-            <a href='#'>
-                <img src='https://raw.githubusercontent.com/alleycaaat/frontend-mentor/main/countdown-timer/images/icon-pinterest.svg'
-                    alt='pinterest icon'>
-            </a>
+
+
+
+
+    <div class="footer">
+        <div class="bubbles">
+            <!-- 128 randomly styled bubbles -->
+            <!-- You can generate these dynamically with JS; here’s the structure -->
+            <!-- Example bubble (repeat 128 times with random styles) -->
+            <div class="bubble" style="--size:3.2rem; --distance:8.1rem; --position:25%; --time:3s; --delay:-2.1s;">
+            </div>
+            <!-- ... repeat for all bubbles -->
         </div>
-        <p>&copy; 2025 dark pino. All Rights Reserved.</p>
-
-    </footer>
 
 
+        <div class="footer-grid">
+            <!-- Left Column -->
+            <div class="footer-left">
+                <h3>About Us</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod ex ac risus dapibus, vitae
+                    pretium metus facilisis.</p>
+                <p>© 2025 DPino Contests. All rights reserved.</p>
+            </div>
+
+            <!-- Right Column -->
+            <div class="footer-right">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+                            alt="Instagram"></a>
+                    <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg"
+                            alt="X"></a>
+                    <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg"
+                            alt="Facebook"></a>
+                </div>
+
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Catalog</a></li>
+                    <li><a href="#">Contests</a></li>
+                    <li><a href="#">Cart</a></li>
+                </ul>
+            </div>
+        </div>
 
 
+    </div>
+
+    <svg style="position: fixed; top: 100vh;">
+        <defs>
+            <filter id="blob">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                    result="blob" />
+                <!-- feComposite removed (not needed for blob effect) -->
+            </filter>
+        </defs>
+    </svg>
+
+
+    <!-- Script for hamburger toggle -->
     <script>
-        const cards = document.querySelectorAll('.card');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        }, { threshold: 0.2 });
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
 
-        cards.forEach(card => {
-            observer.observe(card);
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
         });
     </script>
 
     <script>
-        // Function to handle flip animation for simplified single-block number
-        const addFlip = (card, newNumber) => {
-            const number = card.querySelector('.flip-number');
-            if (number.innerText === newNumber) return;
+        const bubblesContainer = document.querySelector('.bubbles');
 
-            // Update number and trigger CSS flip animation
-            number.innerText = newNumber;
-            number.classList.remove('flip'); // reset animation
-            void number.offsetWidth; // trigger reflow
-            number.classList.add('flip');
-        };
+        // Detect screen width
+        const screenWidth = window.innerWidth;
 
-        // Flip counter from 01 → target
-        function countFlipUp(target, duration = 3000) {
-            const card = document.getElementById('userCountCard');
-            let current = 0;
-            const totalFrames = target;
-            const interval = duration / totalFrames;
+        // Adjust number of bubbles based on screen
+        const bubbleCount = screenWidth < 768 ? 30 : 128; // fewer on mobile
 
-            function update() {
-                current++;
-                if (current > target) return;
+        for (let i = 0; i < bubbleCount; i++) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
 
-                // Format number with leading zero
-                const displayNum = String(current).padStart(2, '0');
-                addFlip(card, displayNum);
+            // Bubble size smaller on mobile
+            const size = screenWidth < 768
+                ? 2 + Math.random() * 3  // 2–5rem
+                : 2 + Math.random() * 4; // 2–6rem
 
-                if (current < target) setTimeout(update, interval);
-            }
+            const distance = 6 + Math.random() * 4; // vertical distance
+            const time = 2 + Math.random() * 2;     // animation duration
+            const delay = -1 * (2 + Math.random() * 2); // stagger delay
 
-            update();
+            // Compute horizontal position safely to avoid overflow
+            // Convert bubble size (rem) to pixels using 16px base
+            const sizePx = size * 16;
+            const halfWidthPercent = (sizePx / window.innerWidth) * 50; // half width as percent
+            const position = halfWidthPercent + Math.random() * (100 - 2 * halfWidthPercent);
+
+            bubble.style.setProperty('--size', `${size}rem`);
+            bubble.style.setProperty('--distance', `${distance}rem`);
+            bubble.style.setProperty('--position', `${position}%`);
+            bubble.style.setProperty('--time', `${time}s`);
+            bubble.style.setProperty('--delay', `${delay}s`);
+
+            bubblesContainer.appendChild(bubble);
         }
-
-        // Trigger counter when visible on screen
-        const counterObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    countFlipUp(50, 3000); // Count 01 → 50 in 3 seconds
-                    counterObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        counterObserver.observe(document.getElementById('userCountCard'));
     </script>
+
+
+
 
 
 </body>
